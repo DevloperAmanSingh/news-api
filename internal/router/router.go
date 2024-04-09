@@ -35,5 +35,8 @@ func SetupRouter() *fiber.App {
 	app.Get("/api/bookmarks/:username/:itemType", func(c *fiber.Ctx) error {
 		return handlers.GetBookmarks(c)
 	})
+	app.Get("/api/search", func(c *fiber.Ctx) error {
+		return handlers.SearchStoriesAndComment(c)
+	})
 	return app
 }
