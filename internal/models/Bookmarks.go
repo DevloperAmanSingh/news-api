@@ -8,7 +8,6 @@ import (
 
 type Bookmark struct {
 	ID         primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
-	UserID     primitive.ObjectID `json:"userId" bson:"userId"`
 	Username   string             `json:"username" bson:"username"`
 	CommentIDs []string           `json:"commentIds" bson:"commentIds"`
 	StoryIDs   []string           `json:"storyIds" bson:"storyIds"`
