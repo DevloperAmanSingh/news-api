@@ -42,7 +42,7 @@ func GetStoryComments(c *fiber.Ctx) error {
 
 	// Fetch each comment by ID
 	for _, id := range commentIDs {
-		comment, err := GetCommentByID(id)
+		comment, err := GetCommentByIDs(id)
 		if err != nil {
 			return c.Status(http.StatusInternalServerError).SendString("Error fetching comments")
 		}
@@ -53,7 +53,7 @@ func GetStoryComments(c *fiber.Ctx) error {
 	return c.JSON(comments)
 }
 
-func GetCommentByID(id int) (*models.Comment, error) {
+func GetCommentByIDs(id int) (*models.Comment, error) {
 	url := fmt.Sprintf("https://hacker-news.firebaseio.com/v0/item/%d.json", id)
 	resp, err := http.Get(url)
 	if err != nil {
@@ -71,7 +71,7 @@ func GetCommentByID(id int) (*models.Comment, error) {
 	if len(comment.Kids) > 0 {
 		replies := make([]models.Comment, 0)
 		for _, kidID := range comment.Kids {
-			reply, err := GetCommentByID(kidID)
+			reply, err := GetCommentByIDs(kidID)
 			if err != nil {
 				return nil, err
 			}
