@@ -28,5 +28,9 @@ func SetupRouter() *fiber.App {
 	app.Get("/api/users/:id", func(c *fiber.Ctx) error {
 		return handlers.GetUserFromApi(c)
 	})
+
+	app.Post("/api/bookmarks", func(c *fiber.Ctx) error {
+		return handlers.SetBookmarks(c)
+	})
 	return app
 }
