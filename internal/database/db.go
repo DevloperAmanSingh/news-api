@@ -27,6 +27,7 @@ func ConnectDatabase(url, name string) {
 		log.Fatalf("Error pinging database: %v", err)
 	}
 	bookMarksCollection = client.Database(dbName).Collection("bookmarks")
+	log.Printf(bookMarksCollection.Name())
 	userCollection = client.Database(dbName).Collection("users")
 	log.Println("Connected to MongoDB!")
 }
@@ -36,6 +37,13 @@ func GetUserCollection() *mongo.Collection {
 		log.Fatalf("Database connection is not initialized")
 	}
 	return userCollection
+}
+
+func GetBookmarksCollection() *mongo.Collection {
+	if bookMarksCollection == nil {
+		log.Fatalf("Database connection is not initializeddd")
+	}
+	return bookMarksCollection
 }
 
 func DisconnectDatabase() {
