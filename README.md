@@ -31,11 +31,10 @@ http://localhost:3000
 - **Description:** Fetches the stories and comments bookmarked by the user.
 
 ### Bookmark a Story or Comment
-- **URL:** /api/bookmarks
+- **URL:** /api/setbookmarks
 - **Method:** POST
 - **Request Body:**
   ```json
   {
     "item_id": 123,
-    "type": "story"
   }
